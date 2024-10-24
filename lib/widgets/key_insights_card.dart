@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class KeyInsightsCard extends StatelessWidget {
-  const KeyInsightsCard({Key? key}) : super(key: key);
+  const KeyInsightsCard({super.key});
 
   @override
   Widget build(BuildContext context) {

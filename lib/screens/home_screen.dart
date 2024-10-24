@@ -22,7 +22,6 @@ class HomeScreen extends StatelessWidget {
               VideoAnalysisCard(),
               SizedBox(height: 16),
               KeyInsightsCard(),
-              SizedBox(height: 16),
               DetailedResultsCard(),
             ],
           ),
