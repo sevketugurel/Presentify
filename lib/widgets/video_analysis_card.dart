@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class VideoAnalysisCard extends StatelessWidget {
-  const VideoAnalysisCard({super.key});
+  const VideoAnalysisCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +39,9 @@ class VideoAnalysisCard extends StatelessWidget {
                 // TODO: Implement upload video functionality
               },
               child: const Text('Upload Video'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+              ),
             ),
           ],
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class KeyInsightsCard extends StatelessWidget {
-  const KeyInsightsCard({super.key});
+  const KeyInsightsCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,11 +10,11 @@ class KeyInsightsCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16.0),
       ),
       elevation: 4,
-      child: const Padding(
-        padding: EdgeInsets.all(16.0),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: const [
             Text(
               'Key Insights',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -25,8 +25,7 @@ class KeyInsightsCard extends StatelessWidget {
               title: Text('Confidence level: High'),
             ),
             ListTile(
-              // Changed icon from Icons.stress_management to Icons.self_improvement
-              leading: Icon(Icons.self_improvement, color: Colors.blue),
+              leading: Icon(Icons.accessibility_new, color: Colors.blue),
               title: Text('Stress level: Medium'),
             ),
             ListTile(

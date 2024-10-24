@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../widgets/video_analysis_card.dart'; // Import VideoAnalysisCard widget
-import '../widgets/key_insights_card.dart';  // Import KeyInsightsCard widget
-import '../widgets/detailed_results_card.dart';  // Import DetailedResultsCard widget
-import '../widgets/bottom_nav_bar.dart';  // Import BottomNavBar widget
+import '../widgets/video_analysis_card.dart';
+import '../widgets/key_insights_card.dart';
+import '../widgets/detailed_results_card.dart';
+import '../widgets/bottom_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +14,15 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Body Language Analyzer'),
         centerTitle: true,
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(16.0),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
-            children: [
+            children: const [
               VideoAnalysisCard(),
               SizedBox(height: 16),
               KeyInsightsCard(),
+              SizedBox(height: 16),
               DetailedResultsCard(),
             ],
           ),
