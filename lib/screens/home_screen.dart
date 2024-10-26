@@ -12,13 +12,13 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Body Language Analyzer'),
-        centerTitle: true,
+
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: const Padding(
+        padding: EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
-            children: const [
+            children: [
               VideoAnalysisCard(),
               SizedBox(height: 16),
               KeyInsightsCard(),
