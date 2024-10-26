@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "913545633009",
+    "project_id": "body-language-analyzer",
+    "storage_bucket": "body-language-analyzer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913545633009:android:e1380929c497fdf1d39d50",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb5DY7rfyMFQJYUi4YEFsEtc2T0ejTQGQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
