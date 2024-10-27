@@ -1,39 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
-class KeyInsightsCard extends StatelessWidget {
-  const KeyInsightsCard({Key? key}) : super(key: key);
+class KeyInsightCard extends StatelessWidget {
+  final String text;
+
+  KeyInsightCard({required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: Colors.white,
+      color: Colors.white,
+      margin: EdgeInsets.all(10),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
+        borderRadius: BorderRadius.circular(15),
       ),
-      elevation: 4,
+      elevation: 5,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Key Insights',
-          style: GoogleFonts.roboto(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+              "Key Insight",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.blueAccent,
+              ),
             ),
-            const SizedBox(height: 8),
-            const ListTile(
-              leading: Icon(Icons.psychology_outlined, color: Colors.blue),
-              title: Text('Confidence level: High'),
-            ),
-            const ListTile(
-              leading: Icon(Icons.accessibility_new, color: Colors.blue),
-              title: Text('Stress level: Medium'),
-            ),
-            const ListTile(
-              leading: Icon(Icons.pan_tool_outlined, color: Colors.blue),
-              title: Text('Gestures: Frequent'),
+            const Divider(thickness: 1, color: Colors.grey),
+            const SizedBox(height: 10),
+            MarkdownBody(
+              data: text,
+              styleSheet: MarkdownStyleSheet(
+                h2: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green[700],
+                ),
+                p: TextStyle(fontSize: 16, color: Colors.black87, height: 1.5),
+                strong: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              ),
             ),
           ],
         ),
