@@ -1,5 +1,6 @@
 import 'package:image_picker/image_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart'; // Add this import
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'dart:io';
 
 class VideoPickerService {
@@ -22,8 +23,10 @@ class VideoPickerService {
       final storageRef = FirebaseStorage.instance
           .ref()
           .child('videos/${DateTime.now().millisecondsSinceEpoch}.mp4');
+      print('Starting video upload...');
       await storageRef.putFile(File(video.path));
       final downloadUrl = await storageRef.getDownloadURL();
+      print('Upload successful! Download URL: $downloadUrl');
       return downloadUrl;
     } catch (e) {
       print('Error uploading video: $e');
