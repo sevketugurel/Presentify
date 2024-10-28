@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/widgets/detailed_results_card.dart';
-import '../widgets/key_insights_card.dart';
+import '../widgets/insights_card.dart';
 import '../widgets/video_analysis_card.dart';
-
+import '../widgets/bottom_nav_bar.dart'; // BottomNavBar'ı ekliyoruz
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -34,14 +34,14 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               VideoAnalysisCard(onAnalysisComplete: _onAnalysisComplete),
               const SizedBox(height: 16),
-              if (_analysisText != null)
-                KeyInsightCard(text: _analysisText!), // Conditionally display KeyInsightCard
+                InsightCard(text: _analysisText ?? 'Detayları görmek için lütfen analiz yapın.'), // Conditionally display KeyInsightCard
               const SizedBox(height: 16),
               DetailedResultsCard(),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: const BottomNavBar(), // BottomNavBar'ı ekliyoruz
     );
   }
 }
