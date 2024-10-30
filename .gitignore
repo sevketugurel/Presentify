@@ -1,45 +1,123 @@
-# Miscellaneous
+# ----------------------------
+# Genel Ayarlar
+# ----------------------------
+
+# Derleme ve geçici dosyalar
 *.class
 *.log
 *.pyc
 *.swp
 .DS_Store
+
+# Versiyon kontrol sistemleri
+.svn/
+.history
+
+# Diğer klasörler
 .atom/
 .buildlog/
-.history
-.svn/
 migrate_working_dir/
 
-# IntelliJ related
+# ----------------------------
+# IDE ve Editör Ayarları
+# ----------------------------
+
+# IntelliJ IDEA
 *.iml
 *.ipr
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# VS Code
+.vscode/
+# Eğer belirli VS Code ayarlarını dahil etmek isterseniz, yukarıdaki satırı yorum satırına alabilirsiniz.
 
-# Flutter/Dart/Pub related
+# ----------------------------
+# Flutter/Dart/Pub Ayarları
+# ----------------------------
+
+# Dokümantasyon API'si
 **/doc/api/
+
+# Flutter build ID
 **/ios/Flutter/.last_build_id
+
+# Dart araçları ve önbellek
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
+
+# Build klasörü
 /build/
 
-# Symbolication related
+# ----------------------------
+# Symbolication ve Obfuscation
+# ----------------------------
+
+# Symbolication dosyaları
 app.*.symbols
 
-# Obfuscation related
+# Obfuscation dosyaları
 app.*.map.json
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+# ----------------------------
+# Android Studio Ayarları
+# ----------------------------
+
+# Android build artefaktları
+/android/app/debug/
+/android/app/profile/
+/android/app/release/
+
+# ----------------------------
+# Çevresel Değişkenler
+# ----------------------------
 
 .env
+
+# ----------------------------
+# Ekstra Öneriler
+# ----------------------------
+
+# Python Sanal Ortamları
+venv/
+ENV/
+env/
+.venv/
+.env/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Paketler
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Log Dosyaları
+logs/
+*.log
+
+# Sistem Dosyaları
+Thumbs.db
+ehthumbs.db
+
+# Diğer Geçici Dosyalar
+tmp/
+temp/
+
+
+*.dartignore
+*.editorconfig
+*.firebaserc
+*.gitattributes
