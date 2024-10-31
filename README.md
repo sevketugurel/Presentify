@@ -17,7 +17,7 @@
 
 ## 📖 Proje Hakkında
 <a name="proje-hakkinda"></a>
-**Sunum Becerileri Geliştirici**, BTK Akademi Hackathon 2024 için geliştirilmiş, kullanıcıların sunum, sözlü sınav, konferans konuşması gibi performanslarını yapay zeka destekli analizlerle değerlendiren ve öneriler sunarak gelişimlerine destek sağlayan bir uygulamadır.
+**Presentify**, BTK Akademi Hackathon 2024 için geliştirilmiş, kullanıcıların sunum, sözlü sınav, konferans konuşması gibi performanslarını yapay zeka destekli analizlerle değerlendiren ve öneriler sunarak gelişimlerine destek sağlayan bir uygulamadır.
 
 - **Proje Adı:** Presentify  
 - **Amacı:** Kullanıcıların etkili sunum yapma becerilerini geliştirmesi için ses tonu, konuşma hızı, beden dili, göz teması gibi önemli sunum unsurlarında analiz ve geri bildirim sağlamaktır.  
