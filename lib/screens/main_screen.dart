@@ -51,7 +51,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.history),
-            label: 'Geçmiş Analizler',
+            label: 'Geçmiş',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

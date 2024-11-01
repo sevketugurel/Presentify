@@ -1,4 +1,5 @@
 // lib/main.dart
+
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // GoogleFonts ile oluşturulan temel TextTheme
+    final TextTheme baseTextTheme = GoogleFonts.poppinsTextTheme();
+
     return MaterialApp(
       title: 'Body Language Analyzer',
       theme: ThemeData(
@@ -49,21 +53,19 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        textTheme: GoogleFonts.poppinsTextTheme(
-          Theme.of(context).textTheme.copyWith(
-            titleLarge: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87, // Başlık yazı tipi rengi.
-            ),
-            bodyMedium: const TextStyle(
-              fontSize: 16,
-              color: Colors.black54, // Gövde metinleri için daha yumuşak siyah ton.
-            ),
-            bodySmall: const TextStyle(
-              fontSize: 14,
-              color: Colors.blueGrey, // Daha küçük açıklamalar için gri ton.
-            ),
+        textTheme: baseTextTheme.copyWith(
+          titleLarge: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87, // Başlık yazı tipi rengi.
+          ),
+          bodyMedium: const TextStyle(
+            fontSize: 16,
+            color: Colors.black54, // Gövde metinleri için daha yumuşak siyah ton.
+          ),
+          bodySmall: const TextStyle(
+            fontSize: 14,
+            color: Colors.blueGrey, // Daha küçük açıklamalar için gri ton.
           ),
         ),
         appBarTheme: AppBarTheme(
@@ -87,6 +89,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const MainScreen(), // Ana ekran olarak MainScreen'i ayarlayın
+      debugShowCheckedModeBanner: false, // Debug banner'ı kaldırın
     );
   }
 }

@@ -56,7 +56,6 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 16),
               _buildInsightsSection(),
               const SizedBox(height: 16),
-              _buildDetailedResultsSection(),
             ],
           ),
         ),
@@ -66,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      title: const Text('Body Language Analyzer'),
+      title: const Text('Presentify'),
       centerTitle: true,
       // AppBar still uses the theme's styling
     );
@@ -94,11 +93,5 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  Widget _buildDetailedResultsSection() {
-    if (_analysisText != null && !_isLoading && _error == null) {
-      return const DetailedResultsCard();
-    } else {
-      return const SizedBox.shrink(); // DetailedResultsCard gösterilmez
-    }
-  }
+
 }

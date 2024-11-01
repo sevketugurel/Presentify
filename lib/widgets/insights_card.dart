@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:myapp/widgets/timeline_popup.dart';
+import '../screens/personalized_charts_page.dart'; // Yeni sayfayı import edin
+import 'timeline_popup.dart'; // Mevcut diğer popup'ları
 import 'other_insights_popup.dart';
 
 class InsightCard extends StatelessWidget {
@@ -61,7 +62,7 @@ class InsightCard extends StatelessWidget {
           children: [
             // Başlık
             Text(
-              'Insights',
+              'Öngörüler',
               style: GoogleFonts.roboto(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
@@ -98,10 +99,10 @@ class InsightCard extends StatelessWidget {
             ),
             const SizedBox(height: 15),
 
-            // Diğer Insights Bölümü
+            // Diğer Öngörüler Bölümü
             _buildSection(
               context: context,
-              title: "Diğer Insights'ları Görüntüle",
+              title: "Diğer Öngörüler'i Görüntüle",
               buttonColor: Colors.teal[600],
               icon: Icons.insights,
               onPressed: () {
@@ -116,12 +117,47 @@ class InsightCard extends StatelessWidget {
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('Diğer insights bulunmamaktadır.'),
+                      content: Text('Diğer öngörüler bulunmamaktadır.'),
                       behavior: SnackBarBehavior.floating,
                     ),
                   );
                 }
               },
+            ),
+            const SizedBox(height: 15),
+
+            // Yeni "Kişiselleştirilmiş Grafik Sonuçlarına Git" Butonu
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const PersonalizedChartsPage()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurpleAccent, // "Analizi Başlat" butonuyla aynı renk
+                padding: const EdgeInsets.symmetric(
+                  vertical: 11.0, // Buton yüksekliği
+                  horizontal: 22.0, // Buton genişliği
+                ), // "Analizi Başlat" butonuyla aynı padding
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ), // "Analizi Başlat" butonuyla aynı köşe yuvarlatma
+                elevation: 6, // "Analizi Başlat" butonuyla aynı gölge
+              ),
+              icon: Icon(
+                Icons.bar_chart, // Grafik benzeri ikon
+                color: Colors.white,
+                size: 20,
+              ),
+              label: Text(
+                'Kişiselleştirilmiş Grafik Sonuçlarına Git',
+                style: GoogleFonts.roboto(
+                  color: Colors.white,
+                  fontSize: 14.5, // "Analizi Başlat" butonuyla aynı font boyutu
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ),
           ],
         ),

@@ -12,7 +12,7 @@ class ImproveSkillsScreen extends StatelessWidget {
     'Sesin Doğru Kullanımı',
     'Stresle Başa Çıkma',
     'Sahnedeki Doğru Duruş',
-    'Sunum Öncesi Yapılması Gerekenler',
+    'Sunum Öncesi Yapılması Gerekenler'
   ];
 
   @override
