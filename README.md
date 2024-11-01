@@ -12,6 +12,7 @@
 5. [Demo](#demo)
 6. [Geliştirmeler](#geliştirmeler)
 7. [Gelecek Özellikler](#gelecek-özellikler)
+8. [Contributors](#contributors)
 
 ---
 
@@ -103,5 +104,9 @@ Gelecekte eklemeyi planladığımız özellikler:
   - Kullanıcılar, topluluk içinde performanslarını paylaşabilecek, diğer kullanıcılarla etkileşimde bulunabilecek ve geri bildirim alabilecekler. Bu sayede, destekleyici bir öğrenme ortamı yaratılarak motivasyon ve etkileşim artırılacak.
 
 ---
+## Contributors
+<a name="contributors"></a>
+[![Sevket Ugurel](https://github.com/sevketugurel.png?size=50)](https://github.com/sevketugurel)  [![Ebru Akyar](https://github.com/EbruAkyar.png?size=50)](https://github.com/EbruAkyar)   [![Yasin Kazan](https://github.com/mykazan.png?size=50)](https://github.com/mykazan)  
 
+---
 🎉 Bu projeyi desteklediğiniz için teşekkürler! Geliştirmeler ve geri bildirimler için katkılarınızı bekliyoruz. 🎉
