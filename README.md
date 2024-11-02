@@ -1,18 +1,25 @@
 # 🌟 SYNAPS | BTK Akademi Hackathon 2024 🌟
 
-![Untitled design (1)](https://github.com/user-attachments/assets/ded13469-d6e9-44aa-a4c2-a231a2feb64e)
-
----
-
-## 📜 İçindekiler
-1. [Proje Hakkında](#proje-hakkinda)
-2. [Proje Detayları](#proje-detaylari)
-3. [Kullanılan Teknolojiler](#kullanilan-teknolojiler)
-4. [Uygulama Yetenekleri](#uygulama-yetenekleri)
-5. [Demo](#demo)
-6. [Geliştirmeler](#geliştirmeler)
-7. [Gelecek Özellikler](#gelecek-özellikler)
-8. [Contributors](#contributors)
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/ded13469-d6e9-44aa-a4c2-a231a2feb64e" width="150px">
+    </td>
+    <td>
+      <h2>📜 İçindekiler</h2>
+      <ul>
+        <li><a href="#proje-hakkinda">Proje Hakkında</a></li>
+        <li><a href="#proje-detaylari">Proje Detayları</a></li>
+        <li><a href="#kullanilan-teknolojiler">Kullanılan Teknolojiler</a></li>
+        <li><a href="#kullanici-profil">Hedeflenen Kullanıcı Profilleri</a></li>
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#geliştirmeler">Geliştirmeler</a></li>
+        <li><a href="#gelecek-özellikler">Gelecek Özellikler</a></li>
+        <li><a href="#contributors">Contributors</a></li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -21,7 +28,7 @@
 **Presentify**, BTK Akademi Hackathon 2024 için geliştirilmiş, kullanıcıların sunum, sözlü sınav, konferans konuşması gibi performanslarını yapay zeka destekli analizlerle değerlendiren ve öneriler sunarak gelişimlerine destek sağlayan bir uygulamadır.
 ### Proje Özeti
 - **Proje Adı:** Presentify  
-- **Amacı:** Kullanıcıların etkili sunum ve konuşma becerilerini geliştirmesine yardımcı olmak. Presentify, ses tonu, konuşma hızı, beden dili ve göz teması gibi sunumun veya konuşmanın önemli unsurlarını analiz ederek geri bildirim sağlar.  
+- **Amacı:** Kullanıcıların etkili sunum ve konuşma becerilerini geliştirmesine yardımcı olmak. Presentify, ses tonu, konuşma hızı, beden dili ve göz teması gibi sunumun veya konuşmanın önemli unsurlarını analiz ederek geri bildirim sağlar. Kullanıcıların kendilerini geliştirebilmesi için bilgi kartları ve özel eğitim içerikleri sağlar.
 - **Çözdüğü Sorun:** Sunum ve topluluk önünde konuşma becerilerinin geliştirilmesine ihtiyaç duyan kullanıcılar için kişiselleştirilmiş analiz ve öneriler sunar.
 - **Genel Bilgi:** Kullanıcılar, uygulamaya video yükleyerek sunum ve konuşma performansları hakkında analizler alabilir. Eksik alanlarda gelişim sağlamak için özel eğitim videolarına yönlendirilirler.
 
@@ -38,28 +45,31 @@ Presentify, aşağıdaki kriterleri detaylı bir şekilde inceleyerek kullanıc�
 - **Göz Teması** - Göz teması kurma sıklığını analiz ederek dinleyiciyle etkileşimi artırmaya yönelik geri bildirimler verir.
 
 ### Ana Özellikler
+- **Video Yükleme Özelliği**
+  - Presentify, kullanıcıların konuşma ve sunum performanslarını analiz edebilmek için video yüklemelerine olanak tanır.
+![Untitled design (2)](https://github.com/user-attachments/assets/e4bf3d21-3d2c-4d12-8837-ea5259cd0073)
 - **Detaylı ve Kapsamlı Analizler**
   - Yüklenen her video, dakikası dakikasına analiz edilir ve kullanıcıya her kritik alan için geri bildirim sağlanır. Bu sayede kullanıcı, güçlü ve geliştirilmesi gereken yönlerini net bir şekilde görebilir.
+![Sunumunuzdaki güçlü yönleri ve önerilerimizi okuyun](https://github.com/user-attachments/assets/f110d816-2a40-4f97-90df-e677cb511407)
 - **Bilgi Kartları**
   - Presentify, kullanıcının eksik yönlerini geliştirmesi için sunum veya konuşma sırasında uygulanabilecek ipuçları içeren bilgi kartları sunar. Kullanıcı bu pratik bilgilerle, ses tonu kullanımı, beden dili ve stres yönetimi gibi konularda farkındalık kazanır.
+  
 - **Hazır Eğitim Kütüphanesi**
-  - Uygulama, doğru beden dili, etkili ses kullanımı, göz teması gibi konuları içeren geniş bir eğitim kütüphanesi sunar. Kullanıcılar, bu kütüphaneye erişerek genel iletişim ve sunum becerilerini geliştirme fırsatına sahip olurlar.  
-
+  - Uygulama, doğru beden dili, etkili ses kullanımı, göz teması gibi konuları içeren geniş bir eğitim kütüphanesi sunar. Kullanıcılar, bu kütüphaneye erişerek genel iletişim ve sunum becerilerini geliştirme fırsatına sahip olurlar.
+  
 ---
 
 ## Kullanılan Teknolojiler
 <a name="kullanilan-teknolojiler"></a>
 Presentify uygulaması, performans analizi ve kullanıcı deneyimini geliştirmek için modern teknolojilerden faydalanmaktadır:
-- ![pngwing com](https://github.com/user-attachments/assets/cf21cd72-e0b3-42f4-b4b7-c790c2752b3c) **Flutter:** Kullanıcı dostu ve hızlı bir arayüz geliştirme imkanı sunan Flutter, Presentify’ın tüm platformlarda tutarlı ve estetik bir deneyim sunmasını sağlar.
-- ![output-onlinepngtools](https://github.com/user-attachments/assets/e3f95d36-2357-4bd7-a344-55c6a434406f) **Google GEMINI:** Yapay zeka destekli video analizleri için Google GEMINI kullanılarak, kullanıcının ses tonu, beden dili ve göz teması gibi kritik performans unsurları çeşitli algoritmalarla analiz edilir. Bu teknoloji, sunum ve konuşma becerilerini derinlemesine değerlendirir.
-- ![pngwing com (1)](https://github.com/user-attachments/assets/ebb69bd8-b5af-43d0-a0b6-a6d00d4fd583) **Firebase:** Güvenilir ve ölçeklenebilir bir veri tabanı çözümü olan Firebase, kullanıcı verilerinin depolanması ve yönetimi için kullanılır. Aynı zamanda, analiz sonuçlarının hızlı ve güvenli bir şekilde erişilebilir olmasını sağlar.
-
+- ![pngwing com](https://github.com/user-attachments/assets/cf21cd72-e0b3-42f4-b4b7-c790c2752b3c) **Flutter:** Kullanıcı arayüzü geliştirme sürecinde tercih ettiğimiz Flutter, Presentify’ın tüm platformlarda hızlı ve tutarlı bir performans sunmasını sağlar. Kullanıcı dostu ve esnek yapısı sayesinde, kullanıcıların rahatça analiz alabileceği şık ve modern bir deneyim sağlanır.
+- ![output-onlinepngtools](https://github.com/user-attachments/assets/e3f95d36-2357-4bd7-a344-55c6a434406f) **Google GEMINI:** Yapay zeka destekli analizlerde, kullanıcıların ses tonu, konuşma hızı, beden dili ve göz teması gibi kritik performans unsurlarını detaylıca incelemek için Google GEMINI kullanıyoruz. Google GEMINI’nin gelişmiş algoritmaları, her yüklenen video üzerinde analiz yaparak sunum ve konuşma becerilerinde derinlemesine bir değerlendirme sağlar.
+- ![pngwing com (1)](https://github.com/user-attachments/assets/ebb69bd8-b5af-43d0-a0b6-a6d00d4fd583) **Firebase:** Kullanıcı verilerinin güvenilir bir şekilde depolanması ve yönetimi için Firebase kullanıyoruz. Firebase’in gerçek zamanlı veri senkronizasyonu ve güvenilir veri tabanı altyapısı sayesinde, kullanıcıların analiz sonuçlarına hızlıca ulaşması sağlanıyor. Ayrıca, uygulamanın ölçeklenebilir yapısına katkıda bulunarak daha fazla kullanıcıya hizmet verebilmemize olanak tanıyor.
 ---
 
-## Uygulama Yetenekleri
-<a name="uygulama-yetenekleri"></a>
+## Hedeflenen Kullanıcı Profilleri
+<a name="kullanici-profil"></a>
 Uygulamanın sağladığı yetenekler, kullanıcıların özgüvenle konuşmalarını ve izleyicileri etkilemelerini sağlar:
-### Hedef Kullanım Senaryoları
 - **Profesyonel Sunum Becerilerini Geliştirmek İsteyenler**
   - İş dünyasında sunum becerilerini güçlendirmek ve etkili bir şekilde fikirlerini sunmak isteyen profesyoneller, Presentify’ın sağladığı analiz ve önerilerle sunum kalitelerini artırabilir.
 - **Sözlü Sınav Pratiği Yapan Öğrenciler**
@@ -83,23 +93,28 @@ Uygulamamızı daha yakından tanımak için demo videosunu izleyebilirsiniz:
 ## Geliştirmeler
 <a name="geliştirmeler"></a>
 Presentify projesi sürekli olarak geliştirilmektedir. Kullanıcı deneyimini iyileştirmek ve uygulamanın işlevselliğini artırmak için üzerinde çalıştığımız başlıca iyileştirmeler:
-- **Analiz Hızını Artırma**
-  - Kullanıcıların geri bildirimlerini daha hızlı almalarını sağlamak için analiz sürecini optimize ediyoruz. Böylece, daha kısa sürede sonuç elde edilecek.
 - **Kapsamlı Eğitim Videoları Kütüphanesi**
   - Kullanıcıların gelişimine katkıda bulunmak için çeşitli konularda daha geniş bir eğitim videosu kütüphanesi oluşturuyoruz. Bu videolar, konuşma ve sunum becerileri konusunda derinlemesine bilgi sunacak.
+- **Analiz Hızını Artırma**
+  - Kullanıcıların geri bildirimlerini daha hızlı almalarını sağlamak için analiz sürecini optimize ediyoruz. Böylece, daha kısa sürede sonuç elde edilecek.
 - **Arayüz İyileştirmeleri**
   - Kullanıcı dostu bir deneyim sağlamak amacıyla arayüz üzerinde çalışıyoruz. Daha modern ve sezgisel bir tasarımla, kullanıcıların uygulamada kolayca gezinmesini hedefliyoruz.
 ---
 
 ## Gelecek Özellikler
 <a name="gelecek-özellikler"></a>
-Gelecekte eklemeyi planladığımız özellikler:
-- **Farklı Dil Seçenekleri**
-  - Uygulamanın farklı dillerde kullanılabilmesi sayesinde, dünyanın dört bir yanından kullanıcılar Presentify’ın sağladığı destekten yararlanabilecek. Böylece, dil bariyerleri ortadan kalkacak ve daha geniş bir kullanıcı kitlesine ulaşılacak.  
-- **Kişiselleştirilebilir Analiz Raporları**
-  - Kullanıcılar, analiz raporlarını ihtiyaçlarına göre özelleştirebilecekler. Örneğin, belirli kriterlere daha fazla odaklanarak kendileri için en önemli alanlarda derinlemesine geri bildirim alabilecekler.
+Gelecekte eklemeyi planladığımız özellikler: 
+- **Kişiselleştirilmiş Eğitim Önerileri**
+  - Kullanıcının analiz sonuçlarına göre, eksik olduğu alanlarda gelişim sağlayabilmesi için özel eğitim önerileri sunulacak. Bu sayede, kullanıcılar ihtiyaçlarına uygun içeriklere yönlendirilerek daha hızlı ve etkili bir şekilde ilerleyebilecekler.
+  
+- **Kullanıcı Analiz Grafikleri**
+  - Kullanıcılar, performans analizlerini görselleştirilmiş grafiklerle izleyebilecek ve gelişimlerini net bir şekilde takip edebilecekler. Belirli kriterlerdeki performanslarını daha derinlemesine inceleyerek, kendileri için en önemli alanlarda ayrıntılı geri bildirim alabilecekler.
+![Sunumunuzdaki güçlü yönleri ve önerilerimizi okuyun (3)](https://github.com/user-attachments/assets/1feeb11e-51dd-4ca9-8660-b05d1262466f)
 - **Kullanıcı İlerleme Takibi**
   - Kullanıcıların zaman içindeki gelişimlerini görmelerine olanak tanıyacak bir ilerleme takip sistemi. Bu özellik, kullanıcıların kendi performanslarını geçmiş verilerle kıyaslayarak gelişimlerini somut olarak görmelerini sağlayacak.
+![Sunumunuzdaki güçlü yönleri ve önerilerimizi okuyun (2)](https://github.com/user-attachments/assets/024df137-0d95-44d3-81e9-c2e6c271f6f0)
+- **Farklı Dil Seçenekleri**
+  - Uygulamanın farklı dillerde kullanılabilmesi sayesinde, dünyanın dört bir yanından kullanıcılar Presentify’ın sağladığı destekten yararlanabilecek. Böylece, dil bariyerleri ortadan kalkacak ve daha geniş bir kullanıcı kitlesine ulaşılacak.
 - **Topluluk ve Paylaşım Desteği**
   - Kullanıcılar, topluluk içinde performanslarını paylaşabilecek, diğer kullanıcılarla etkileşimde bulunabilecek ve geri bildirim alabilecekler. Bu sayede, destekleyici bir öğrenme ortamı yaratılarak motivasyon ve etkileşim artırılacak.
 
