@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:visibility_detector/visibility_detector.dart'; // VisibilityDetector importu
 import 'screens/main_screen.dart'; // MainScreen'i import edin
 
 void main() async {
@@ -22,6 +23,9 @@ void main() async {
     // Uncomment below if developing for web
     // webProvider: WebProvider.reCaptchaV3,
   );
+
+  // İsteğe bağlı olarak, VisibilityDetectorController'ın updateInterval değerini ayarlayabilirsiniz
+  VisibilityDetectorController.instance.updateInterval = Duration(milliseconds: 500);
 
   runApp(const MyApp());
 }
@@ -44,7 +48,7 @@ class MyApp extends StatelessWidget {
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             foregroundColor: Colors.white,
-            backgroundColor: Colors.blueAccent, // Buton üzerindeki yazının rengi.
+            backgroundColor: Colors.blueAccent, // Butonun arka plan rengi.
             textStyle: GoogleFonts.poppins(
               fontWeight: FontWeight.bold, // Daha belirgin buton yazı tipi.
             ),

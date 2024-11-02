@@ -111,9 +111,6 @@ class _VideoAnalysisCardState extends State<VideoAnalysisCard> {
 
   @override
   Widget build(BuildContext context) {
-    // Altın oranı: 1.618
-    // Örneğin, buton yüksekliğini 18'dan yaklaşık 11 olarak ayarlayabiliriz (18 / 1.618 ≈ 11.14)
-    // Benzer şekilde, font boyutunu da küçülteceğiz.
 
     return Card(
       color: Colors.white,

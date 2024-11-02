@@ -1,35 +1,32 @@
 // lib/widgets/skill_card.dart
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SkillCard extends StatelessWidget {
   final String title;
+  final VoidCallback onTap;
 
-  const SkillCard({Key? key, required this.title}) : super(key: key);
+  SkillCard({required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // Container yerine Card kullanarak temanın cardTheme'ını kullanın
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        elevation: 8, // cardTheme'dan miras alabilir
-        shadowColor: Theme.of(context).cardTheme.shadowColor,
-        color: Theme.of(context).cardColor,
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(16),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(
             child: Text(
               title,
-              textAlign: TextAlign.center,
-              style: GoogleFonts.poppins(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Colors.indigo[900], // Renkleri temaya uygun olarak ayarlayın
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
             ),
           ),
         ),
