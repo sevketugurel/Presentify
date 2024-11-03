@@ -86,7 +86,9 @@ Uygulamanın sağladığı yetenekler, kullanıcıların özgüvenle konuşmalar
 Uygulamamızı daha yakından tanımak için demo videosunu izleyebilirsiniz:  
 **Presentify**’ı Keşfedin ve Sunum Becerilerinizi Geliştirmeye Başlayın!
 
-[![Demo Video](link_to_video_thumbnail)](link_to_demo_video)
+
+https://github.com/user-attachments/assets/e0070a55-bb2f-471a-b36c-3a227fdc8765
+
 
 ---
 
