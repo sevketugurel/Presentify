@@ -53,7 +53,7 @@ Presentify, aşağıdaki kriterleri detaylı bir şekilde inceleyerek kullanıc�
 ![Sunumunuzdaki güçlü yönleri ve önerilerimizi okuyun](https://github.com/user-attachments/assets/f110d816-2a40-4f97-90df-e677cb511407)
 - **Bilgi Kartları**
   - Presentify, kullanıcının eksik yönlerini geliştirmesi için sunum veya konuşma sırasında uygulanabilecek ipuçları içeren bilgi kartları sunar. Kullanıcı bu pratik bilgilerle, ses tonu kullanımı, beden dili ve stres yönetimi gibi konularda farkındalık kazanır.
-  
+![bilgi kart](https://github.com/user-attachments/assets/48f4ac76-a5b4-4338-8097-37d07eec7531)
 - **Hazır Eğitim Kütüphanesi**
   - Uygulama, doğru beden dili, etkili ses kullanımı, göz teması gibi konuları içeren geniş bir eğitim kütüphanesi sunar. Kullanıcılar, bu kütüphaneye erişerek genel iletişim ve sunum becerilerini geliştirme fırsatına sahip olurlar.
   
@@ -95,6 +95,7 @@ Uygulamamızı daha yakından tanımak için demo videosunu izleyebilirsiniz:
 Presentify projesi sürekli olarak geliştirilmektedir. Kullanıcı deneyimini iyileştirmek ve uygulamanın işlevselliğini artırmak için üzerinde çalıştığımız başlıca iyileştirmeler:
 - **Kapsamlı Eğitim Videoları Kütüphanesi**
   - Kullanıcıların gelişimine katkıda bulunmak için çeşitli konularda daha geniş bir eğitim videosu kütüphanesi oluşturuyoruz. Bu videolar, konuşma ve sunum becerileri konusunda derinlemesine bilgi sunacak.
+![eğitim](https://github.com/user-attachments/assets/4d9fcdd7-dcad-4cc2-9db9-e843549792fb)
 - **Analiz Hızını Artırma**
   - Kullanıcıların geri bildirimlerini daha hızlı almalarını sağlamak için analiz sürecini optimize ediyoruz. Böylece, daha kısa sürede sonuç elde edilecek.
 - **Arayüz İyileştirmeleri**
@@ -106,7 +107,7 @@ Presentify projesi sürekli olarak geliştirilmektedir. Kullanıcı deneyimini i
 Gelecekte eklemeyi planladığımız özellikler: 
 - **Kişiselleştirilmiş Eğitim Önerileri**
   - Kullanıcının analiz sonuçlarına göre, eksik olduğu alanlarda gelişim sağlayabilmesi için özel eğitim önerileri sunulacak. Bu sayede, kullanıcılar ihtiyaçlarına uygun içeriklere yönlendirilerek daha hızlı ve etkili bir şekilde ilerleyebilecekler.
-  
+ ![kişisel](https://github.com/user-attachments/assets/caed2b51-4320-44b8-a091-ae8e9d710eda)
 - **Kullanıcı Analiz Grafikleri**
   - Kullanıcılar, performans analizlerini görselleştirilmiş grafiklerle izleyebilecek ve gelişimlerini net bir şekilde takip edebilecekler. Belirli kriterlerdeki performanslarını daha derinlemesine inceleyerek, kendileri için en önemli alanlarda ayrıntılı geri bildirim alabilecekler.
 ![Sunumunuzdaki güçlü yönleri ve önerilerimizi okuyun (3)](https://github.com/user-attachments/assets/1feeb11e-51dd-4ca9-8660-b05d1262466f)
