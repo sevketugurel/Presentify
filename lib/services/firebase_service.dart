@@ -1,38 +1,42 @@
-// lib/services/firebase_service.dart
 
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 
 class FirebaseService {
-  // Belirli bir yetenek klasörüne video yükleme
-  static Future<String?> uploadVideoToFirebase(XFile video, int skillIndex) async {
-    try {
-      final fileName = video.name;
-      final ref = FirebaseStorage.instance.ref().child('videos/skill$skillIndex/$fileName');
-      await ref.putFile(File(video.path));
-      return await ref.getDownloadURL();
-    } catch (e) {
-      print('Firebase upload error: $e');
-      return null;
-    }
-  }
+  // Mevcut metodlarınız...
 
-  // Her yetenek için video URL'lerini listeleme
-  static Future<List<List<String>>> getVideoURLs(List<String> skillTitles) async {
+  // Her yetenek için video ve thumbnail URL'lerini listeleme
+  static Future<List<List<Map<String, String>>>> getVideoAndThumbnailURLs(List<String> skillTitles) async {
     try {
-      List<List<String>> allUrls = [];
+      List<List<Map<String, String>>> allData = [];
       for (int i = 0; i < skillTitles.length; i++) {
         String skillFolder = 'videos/skill$i/';
         final ListResult result = await FirebaseStorage.instance.ref(skillFolder).listAll();
-        List<String> urls = [];
+        List<Map<String, String>> skillData = [];
         for (var ref in result.items) {
-          final url = await ref.getDownloadURL();
-          urls.add(url);
+          final fileName = ref.name;
+          if (fileName.endsWith('.mp4')) {
+            final videoUrl = await ref.getDownloadURL();
+            // Thumbnail dosyasının ismini tahmin edelim (örn: video1.mp4 -> video1_thumbnail.jpg)
+            final thumbnailName = fileName.replaceAll('.mp4', '_thumbnail.jpg');
+            final thumbnailRef = FirebaseStorage.instance.ref('$skillFolder$thumbnailName');
+            String thumbnailUrl;
+            try {
+              thumbnailUrl = await thumbnailRef.getDownloadURL();
+            } catch (e) {
+              // Thumbnail bulunamazsa, placeholder kullanabilirsiniz
+              thumbnailUrl = 'https://via.placeholder.com/150';
+            }
+            skillData.add({
+              'videoUrl': videoUrl,
+              'thumbnailUrl': thumbnailUrl,
+            });
+          }
         }
-        allUrls.add(urls);
+        allData.add(skillData);
       }
-      return allUrls;
+      return allData;
     } catch (e) {
       print('Firebase retrieval error: $e');
       return [];

@@ -15,7 +15,7 @@ class OtherInsightsPopup extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Diğer Insights\'lar',
+          'Diğer Öngörüler',
           style: GoogleFonts.roboto(
             color: Colors.white, // Başlık metnini beyaz yapma
             fontSize: 20.0,
