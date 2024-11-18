@@ -1,10 +1,8 @@
-// lib/screens/main_screen.dart
-
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'improve_skills_screen.dart';
 import 'profile_screen.dart';
-import 'past_analyses_screen.dart'; // Yeni ekranı içe aktarın
+import 'past_analyses_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -14,18 +12,17 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  // Seçili sekmenin indeksini tutar
   int _selectedIndex = 0;
 
-  // Her bir sekme için gösterilecek ekranların listesi
+  static const Color _amberColor = Color(0xFFD4A017); // Sıcak amber tonu
+
   static List<Widget> _screens = <Widget>[
     const HomeScreen(),
     ImproveSkillsScreen(),
-    PastAnalysesScreen(), // Yeni ekranı listeye ekleyin
+    PastAnalysesScreen(),
     const ProfileScreen(),
   ];
 
-  // Sekmeye tıklandığında çağrılır
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -34,12 +31,14 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Öğren sekmesi seçili olduğunda amber rengi, diğer durumlarda mavi renk kullan
+    final bool isLearnTabSelected = _selectedIndex == 1;
+
     return Scaffold(
-      // Seçilen sekmeye göre ilgili ekranı gösterir
       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex, // Mevcut seçili sekme
-        onTap: _onItemTapped, // Sekmeye tıklandığında çağrılır
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -58,9 +57,9 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Profil',
           ),
         ],
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white70,
-        backgroundColor: Colors.blue, // Temaya uygun ana renk
+        selectedItemColor: isLearnTabSelected ? _amberColor : Colors.white,
+        unselectedItemColor: isLearnTabSelected ? Colors.black54 : Colors.white70,
+        backgroundColor: isLearnTabSelected ? Colors.white : Colors.blue,
         type: BottomNavigationBarType.fixed,
       ),
     );

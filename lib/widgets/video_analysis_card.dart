@@ -1,14 +1,13 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:myapp/widgets/video_picker_service.dart'; // Doğru import yolunu kontrol edin
-import 'package:flutter_spinkit/flutter_spinkit.dart'; // Özel yükleme animasyonları için
-import 'package:path/path.dart' as path; // Dosya adı almak için
-import 'package:flutter_dotenv/flutter_dotenv.dart'; // .env dosyası için
-import '../services/gemini_service.dart'; // GeminiService'ınızı import edin
-import 'package:video_player/video_player.dart'; // Video önizlemesi için
+import 'package:myapp/widgets/video_picker_service.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:path/path.dart' as path;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import '../services/gemini_service.dart';
+import 'package:video_player/video_player.dart';
 
 class VideoAnalysisCard extends StatefulWidget {
   final Function(String) onAnalysisComplete;
@@ -22,15 +21,14 @@ class VideoAnalysisCard extends StatefulWidget {
 class _VideoAnalysisCardState extends State<VideoAnalysisCard> {
   XFile? _selectedVideo;
   String? _downloadUrl;
-  bool _isUploading = false; // Yükleme durumunu takip eder
-  bool _isAnalyzed = false;  // Videonun analiz edilip edilmediğini takip eder
+  bool _isUploading = false;
+  bool _isAnalyzed = false;
   late final GeminiService _geminiService;
-  VideoPlayerController? _videoController; // Video önizlemesi için
+  VideoPlayerController? _videoController;
 
   @override
   void initState() {
     super.initState();
-    // API anahtarını .env dosyasından alın
     final apiKey = dotenv.env['GEMINI_API_KEY'] ?? '';
     _geminiService = GeminiService(apiKey);
   }
@@ -40,7 +38,6 @@ class _VideoAnalysisCardState extends State<VideoAnalysisCard> {
     _videoController?.dispose();
     super.dispose();
   }
-
   Future<void> _uploadAndAnalyzeVideo() async {
     if (_selectedVideo == null) return;
 
@@ -50,26 +47,21 @@ class _VideoAnalysisCardState extends State<VideoAnalysisCard> {
     });
 
     try {
-      // Firebase'e video yükle
+      // Doğrudan dosya yolu ile analiz yap
+      final analysisResult = await _geminiService.analyzeVideo(_selectedVideo!.path);
+
+      // Firebase upload işlemini arka planda yap
       _downloadUrl = await VideoPickerService.uploadVideoToFirebase(_selectedVideo!);
 
-      if (_downloadUrl != null) {
-        // Gemini API ile videoyu analiz et
-        final analysisResult = await _geminiService.analyzeVideoByUrl(_downloadUrl!);
+      setState(() {
+        _isUploading = false;
+        _isAnalyzed = true;
+      });
 
-        setState(() {
-          _isUploading = false;
-          _isAnalyzed = true;
-        });
-
-        // Sonucu üst widget'a gönder (örneğin, HomeScreen)
-        if (analysisResult != null) {
-          widget.onAnalysisComplete(analysisResult);
-        } else {
-          _showError('Analiz sonucu alınamadı.');
-        }
+      if (analysisResult != null) {
+        widget.onAnalysisComplete(analysisResult);
       } else {
-        _showError('Video yükleme başarısız oldu.');
+        _showError('Analiz sonucu alınamadı.');
       }
     } catch (e) {
       setState(() {
@@ -111,14 +103,13 @@ class _VideoAnalysisCardState extends State<VideoAnalysisCard> {
 
   @override
   Widget build(BuildContext context) {
-
     return Card(
       color: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
       ),
       elevation: 12,
-      shadowColor: Colors.black38, // Daha belirgin gölge
+      shadowColor: Colors.black38,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -151,7 +142,7 @@ class _VideoAnalysisCardState extends State<VideoAnalysisCard> {
                     width: 2,
                   ),
                 )
-                    : null, // Video seçilmişse dekorasyonu kaldır
+                    : null,
                 child: Center(
                   child: _selectedVideo == null
                       ? Column(
@@ -226,7 +217,7 @@ class _VideoAnalysisCardState extends State<VideoAnalysisCard> {
               onPressed: (_selectedVideo == null || _isUploading) ? null : _uploadAndAnalyzeVideo,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepPurpleAccent,
-                padding: const EdgeInsets.symmetric(vertical: 11.0, horizontal: 22.0), // Altın oranına göre küçültülmüş padding
+                padding: const EdgeInsets.symmetric(vertical: 11.0, horizontal: 22.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.0),
                 ),
@@ -245,7 +236,7 @@ class _VideoAnalysisCardState extends State<VideoAnalysisCard> {
                     'Analiz Yapılıyor...',
                     style: GoogleFonts.roboto(
                       color: Colors.white,
-                      fontSize: 11.0, // Altın oranına göre küçültülmüş font boyutu
+                      fontSize: 11.0,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -255,7 +246,7 @@ class _VideoAnalysisCardState extends State<VideoAnalysisCard> {
                 'Analizi Başlat',
                 style: GoogleFonts.roboto(
                   color: Colors.white,
-                  fontSize: 15.0, // Altın oranına göre küçültülmüş font boyutu
+                  fontSize: 15.0,
                   fontWeight: FontWeight.w600,
                 ),
               ),

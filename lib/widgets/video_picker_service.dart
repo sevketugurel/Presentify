@@ -25,7 +25,7 @@ class VideoPickerService {
           .child('videos/${DateTime.now().millisecondsSinceEpoch}.mp4');
       print('Starting video upload...');
       await storageRef.putFile(File(video.path));
-      final downloadUrl = await storageRef.getDownloadURL();
+      var downloadUrl = await storageRef.getDownloadURL();
       print('Upload successful! Download URL: $downloadUrl');
       return downloadUrl;
     } catch (e) {

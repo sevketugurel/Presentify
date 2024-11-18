@@ -4,8 +4,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 
 class FirebaseService {
-  // Mevcut metodlarınız...
-
   // Her yetenek için video ve thumbnail URL'lerini listeleme
   static Future<List<List<Map<String, String>>>> getVideoAndThumbnailURLs(List<String> skillTitles) async {
     try {

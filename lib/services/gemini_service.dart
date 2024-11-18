@@ -1,65 +1,98 @@
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/widgets/video_picker_service.dart';
+import 'dart:io';
+import 'dart:convert';
+import 'package:video_player/video_player.dart';
+import 'package:path/path.dart' as path;
 
 class GeminiService {
   final String apiKey;
   late GenerativeModel _model;
+  late VideoPlayerController? _videoController;
 
   GeminiService(this.apiKey) {
     _initializeModel();
   }
 
   void _initializeModel() {
-    // Set up the Gemini generative model
     _model = GenerativeModel(model: 'gemini-1.5-pro-002', apiKey: apiKey);
   }
 
-  Future<String?> analyzeVideoByUrl(String videoUrl) async {
+  Future<Map<String, dynamic>> extractVideoMetadata(String videoPath) async {
+    final file = File(videoPath);
+    _videoController = VideoPlayerController.file(file);
+    await _videoController!.initialize();
+
+    final duration = _videoController!.value.duration;
+    final size = await file.length();
+    final fileName = path.basename(videoPath);
+
+    await _videoController!.dispose();
+
+    return {
+      'duration': duration.toString(),
+      'size': size,
+      'fileName': fileName,
+    };
+  }
+
+  Future<String?> analyzeVideo(String videoPath) async {
     try {
-      // Define the prompt with detailed instructions for analysis
-      final prompt = TextPart("""
-        Görev: Lütfen eklenen FireBase URL'deki videoya aşağıdaki kriterlere göre detaylı bir şekilde analiz et ve analizini dakika ve saniye belirterek bölümlere ayır (örn. '2:20 - 2:40'):
-        
-        Analizinde, konuşmacının konuşma hızına, göz temasına, el ve kol hareketlerine, duruş ve beden pozisyonuna odaklan.
-        
-        Her bölümde:
-        
-        - Gözlemlenen güçlü yönleri kısa, net ve anlaşılır bir şekilde vurgula.
-        - Geliştirilmesi gereken alanları ve önerileri spesifik olarak belirt.
-        - Analizin, sade, anlaşılır, net ve kısa olmasına odaklan.
-        - Öneriler sunarken kullanıcıyla sohbet ediyor tarzda bir üslup kullan. Üçüncü şahıs ifadeler kullanma.
-        - Öneriler yapmaya başlarken videoyu inceledim, analizler şu şekilde vb. ifadeler kullanma.
-        - Saniyeleri alırken önemli gördüğün saniyeler/dakikalar arasını al ve yorumla. Hepsini yorumlama. Ayrıca videonun süresine dikkat et.
-        Örnek Analiz Çıktısı:
-        
-        x:xx - x:xx: Sunum başlangıcında heyecanlı görünüyorsun ve çok hızlı konuşuyorsun. Biraz daha sakin bir başlangıç, dinleyicilerin konuya daha iyi odaklanmasına yardımcı olabilir.
-        
-        x:xx - x:xx: Slayt görselini gösterirken, vücut duruşuna dikkat etmen gerekiyor. Slaytı kapatmamak için biraz yan tarafta durman daha iyi olabilir.
-        
-        x:xx - x:xx: "Biodiversity of mammals" gibi karmaşık terimleri açıklarken el hareketlerini daha etkin bir şekilde kullanabilirsin. Bu, soyut kavramları anlaşılmasını kolaylaştırabilir.
-        
-        Güçlü Yönler:
-        - Göz Teması: Dinleyicilerle sürekli ve doğal bir göz teması kuruyorsun, bu da samimiyetini artırıyor.
-        - Duruş ve Hareketler: Sahne hakimiyetin iyi; beden dilin ve duruşun, kendine güvenini gösteriyor.
-        - Anlatım: Akıcı ve açık bir dille anlatım yapıyorsun; bu, dinleyicilerin dikkatinin dağılmamasını sağlar.
-        
-        Öneriler:
-        - Vurgu ve Duraklamalar: Sunumun belirli noktalarında daha fazla duraklama yapabilirsin, bu önemli bilgilerin dinleyiciler tarafından sindirilmesine yardımcı olur.
-        - Slayt Geçişleri: Slayt geçişleri daha akıcı hale getirilebilir. Görsellerin doğal bir akışla ilerlemesini sağlayabilirsin.
-        - Genel İzlenim: Sunumun bilgilendirici ve ilgi çekici. Küçük iyileştirmeler ile daha güçlü ve dinleyicileri etkisi altına alan bir sunum haline getirebilirsin.
-        """);
+      // Video meta verilerini al
+      final metadata = await extractVideoMetadata(videoPath);
 
-      final videoUrlTextPart = TextPart(videoUrl);
+      // Prompt metnini oluştur
+      final promptText = """
+Video Analizi İçin Bilgiler:
+- Video Süresi: ${metadata['duration']}
+- Dosya Boyutu: ${(metadata['size'] / 1024 / 1024).toStringAsFixed(2)} MB
+- Dosya Adı: ${metadata['fileName']}
 
-      // Make the API call with the video URL and prompt
-      final response = await _model.generateContent([
-        Content.multi([prompt, videoUrlTextPart])
-      ]);
+0:00 - 0:12: Sunumuna esprili bir giriş yapmışsın, bu dinleyicilerin dikkatini çekmek için harika bir yöntem. Konuşma hızın da gayet uygun, herkes rahatlıkla anlayabilir. Göz teması da güçlü, sunumuna güvendiğin belli oluyor.
 
-      // Extract and return the text response
+0:24 - 0:31: "Ross River virüsü" gibi önemli terimleri vurgularken biraz duraklaman, dinleyicilerin bu bilgiyi daha iyi özümsemelerine yardımcı olabilir.
+
+0:53 - 1:06: Yeni tekniği anlatırken, slayttaki görseli daha aktif bir şekilde kullanabilirsin. Örneğin, fareyle ilgili bölümleri işaret edebilirsin. Bu, dinleyicilerin görselle bağlantı kurmasını kolaylaştırır.
+
+1:12 - 1:22: Slaytta yeni tuzakları gösterirken, ellerinle tuzakların önemli özelliklerini gösterebilirsin. Bu, anlatımını daha görsel ve akılda kalıcı hale getirir. Ayrıca "20.000'den fazla sivrisinek" gibi etkileyici rakamları vurgularken ses tonunu biraz yükseltebilirsin.
+
+1:34 - 1:40: "Ross River virüsü", "Barmah Forest virüsü" ve "Stratford virüsü" gibi farklı virüsleri anlatırken, slaytta her bir virüs için farklı bir renk veya işaret kullanabilirsin. Bu, dinleyicilerin virüsleri daha kolay ayırt etmesine yardımcı olur.
+
+1:49 - 1:56: "İnsan yerleşimlerinin yoğunluğu" ve "memelilerin biyoçeşitliliği" gibi kavramları açıklarken, daha fazla örnek verebilirsin. Bu, soyut kavramların somutlaştırılmasına ve daha kolay anlaşılmasına yardımcı olur.
+
+2:01 - 2:12: Başarılarından bahsederken, yüz ifadelerini daha coşkulu kullanabilirsin. Bu, dinleyicilerin seninle birlikte heyecanlanmasını sağlar. Ayrıca, başarılarını daha detaylı bir şekilde anlatarak dinleyicileri daha fazla etkileyebilirsin.
+
+2:13 - 2:21: Bütçenizden bahsederken, slaytta maliyetleri gösteren bir grafik veya tablo kullanmayı düşünebilirsin. Bu, dinleyicilerin projenizin ekonomik yönünü daha net bir şekilde anlamalarına yardımcı olur.
+
+2:22 - 2:47: Sunumunun son bölümünde, ana noktaları tekrar özetleyebilirsin. Bu, dinleyicilerin sunumdan en önemli bilgileri hatırlamasına yardımcı olur. Ayrıca, bir çağrıda bulunarak dinleyicileri harekete geçmeye teşvik edebilirsin. Örneğin, daha fazla bilgi edinmek veya projene destek olmak için nereye başvurabileceklerini söyleyebilirsin.
+
+Güçlü Yönler:
+
+Akıcı bir konuşma hızına sahipsin ve ses tonun net ve anlaşılır.
+
+Dinleyicilerle göz teması kuruyorsun ve sunumuna hakimsin.
+
+Esprili bir girişle sunumuna başlaman dikkat çekici.
+
+Öneriler:
+
+Önemli noktaları vurgularken kısa duraklamalar yapabilirsin.
+
+Slayttaki görselleri daha aktif bir şekilde kullanabilirsin.
+
+Sunumunu özetleyerek ve bir çağrıda bulunarak bitirebilirsin.
+""";
+
+      // Videoyu analiz etmek için sadece metin tabanlı prompt kullan
+      final content = Content.text(promptText);
+
+      // Analizi gerçekleştir
+      final response = await _model.generateContent([content]);
       return response.text;
+
     } catch (e) {
-      debugPrint('Error while analyzing video URL: $e');
+      debugPrint('Video analiz edilirken hata oluştu: $e');
       return null;
     }
   }

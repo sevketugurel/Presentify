@@ -8,13 +8,31 @@ class ImproveSkillsScreen extends StatefulWidget {
 }
 
 class _ImproveSkillsScreenState extends State<ImproveSkillsScreen> {
-  final List<String> skillTitles = [
-    'Doğru Beden Dili Kullanımı',
-    'Konuşma Heyecanını Aşma',
-    'Sesin Doğru Kullanımı',
-    'Stresle Başa Çıkma',
-    'Sahnedeki Doğru Duruş',
-    'Sunum Öncesi Yapılması Gerekenler'
+  final List<Map<String, String>> skillTitlesAndImages = [
+    {
+      'title': 'Doğru Beden Dili Kullanımı',
+      'image': 'lib/assets/images/body_language.png'
+    },
+    {
+      'title': 'Konuşma Heyecanını Aşma',
+      'image': 'lib/assets/images/speech_anxiety.png'
+    },
+    {
+      'title': 'Sesin Doğru Kullanımı',
+      'image': 'lib/assets/images/voice_usage.png'
+    },
+    {
+      'title': 'Stresle Başa Çıkma',
+      'image': 'lib/assets/images/speech_anxiety2.png'
+    },
+    {
+      'title': 'Sahnedeki Doğru Duruş',
+      'image': 'lib/assets/images/stage_posture.png'
+    },
+    {
+      'title': 'Sunum Öncesi Yapılması Gerekenler',
+      'image': 'lib/assets/images/presentation_prep.png'
+    }
   ];
 
   late Future<List<List<Map<String, String>>>> _videoAndThumbnailData;
@@ -22,7 +40,9 @@ class _ImproveSkillsScreenState extends State<ImproveSkillsScreen> {
   @override
   void initState() {
     super.initState();
-    _videoAndThumbnailData = FirebaseService.getVideoAndThumbnailURLs(skillTitles);
+    _videoAndThumbnailData = FirebaseService.getVideoAndThumbnailURLs(
+      skillTitlesAndImages.map((item) => item['title']!).toList(),
+    );
   }
 
   void _navigateToSkillDetail(BuildContext context, String title, List<Map<String, String>> skillData) {
@@ -47,21 +67,21 @@ class _ImproveSkillsScreenState extends State<ImproveSkillsScreen> {
             expandedHeight: 200.0,
             floating: false,
             pinned: true,
-            backgroundColor: Color(0xFF1F2937), // Koyu gri-mavi tonu
+            backgroundColor: Color(0xFF1F2937),
             elevation: 0,
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: EdgeInsets.only(left: 16.0, bottom: 16.0),
-              expandedTitleScale: 1.0, // Başlık boyutunun değişmemesi için
+              expandedTitleScale: 1.0,
               title: Text(
                 'Yeteneklerini Geliştir',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 25,
                 ),
                 textAlign: TextAlign.left,
               ),
-              centerTitle: false, // Başlığı sola yaslamak için
+              centerTitle: false,
               background: Stack(
                 fit: StackFit.expand,
                 children: [
@@ -94,14 +114,20 @@ class _ImproveSkillsScreenState extends State<ImproveSkillsScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Önerilen Yetenekler',
+                    'Yeteneklerini geliştirerek daha iyi sunumlar yapabilirsin!',
                     style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).primaryColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   SizedBox(height: 16),
+                  Text(
+                    'Aşağıdaki yeteneklerden birini seçerek gelişimine devam edebilirsin.',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey.shade600,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -145,7 +171,7 @@ class _ImproveSkillsScreenState extends State<ImproveSkillsScreen> {
                       index,
                       skillData,
                     ),
-                    childCount: skillTitles.length,
+                    childCount: skillTitlesAndImages.length,
                   ),
                 );
               },
@@ -181,7 +207,9 @@ class _ImproveSkillsScreenState extends State<ImproveSkillsScreen> {
         ElevatedButton.icon(
           onPressed: () {
             setState(() {
-              _videoAndThumbnailData = FirebaseService.getVideoAndThumbnailURLs(skillTitles);
+              _videoAndThumbnailData = FirebaseService.getVideoAndThumbnailURLs(
+                skillTitlesAndImages.map((item) => item['title']!).toList(),
+              );
             });
           },
           icon: Icon(Icons.refresh),
@@ -203,6 +231,7 @@ class _ImproveSkillsScreenState extends State<ImproveSkillsScreen> {
       List<List<Map<String, String>>> skillData,
       ) {
     final thumbnailUrl = skillData[index].isNotEmpty ? skillData[index][0]['thumbnailUrl'] ?? '' : '';
+    final categoryImage = skillTitlesAndImages[index]['image']!;
 
     return Card(
       elevation: 4,
@@ -212,7 +241,7 @@ class _ImproveSkillsScreenState extends State<ImproveSkillsScreen> {
       child: InkWell(
         onTap: () => _navigateToSkillDetail(
           context,
-          skillTitles[index],
+          skillTitlesAndImages[index]['title']!,
           skillData[index],
         ),
         borderRadius: BorderRadius.circular(16),
@@ -223,9 +252,8 @@ class _ImproveSkillsScreenState extends State<ImproveSkillsScreen> {
               flex: 3,
               child: ClipRRect(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-                child: thumbnailUrl.isNotEmpty
-                    ? Image.network(
-                  thumbnailUrl,
+                child: Image.asset(
+                  categoryImage,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
@@ -237,14 +265,6 @@ class _ImproveSkillsScreenState extends State<ImproveSkillsScreen> {
                       ),
                     );
                   },
-                )
-                    : Container(
-                  color: Colors.grey.shade200,
-                  child: Icon(
-                    Icons.play_circle_outline,
-                    size: 40,
-                    color: Colors.grey.shade400,
-                  ),
                 ),
               ),
             ),
@@ -256,7 +276,7 @@ class _ImproveSkillsScreenState extends State<ImproveSkillsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      skillTitles[index],
+                      skillTitlesAndImages[index]['title']!,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
